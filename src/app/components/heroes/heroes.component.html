@@ -3,7 +3,7 @@
 <div><input id="name" [(ngModel)]="hero.name" placeholder="name" /></div> -->
 
 <h2>My Heroes</h2>
-<ul class="heroes">
+<!-- <ul class="heroes">
 
     <li *ngFor="let hero of heroes">
         <button type="button" [class.selected]="hero == selectedHero" (click)="onSelect(hero)">
@@ -13,7 +13,25 @@
         </button>
     </li>
 
+</ul> -->
+
+<ul class="heroes">
+
+    <li *ngFor="let hero of heroes">
+    <a routerLink="detail/{{hero.id}}">
+        <span class="badge">{{hero.id}}</span>
+        <span class="name">{{hero.name}}</span>
+
+    </a>
+
+        
+    </li>
+
 </ul>
+
+
+
+
 <!-- test -->
 <!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> -->
 
