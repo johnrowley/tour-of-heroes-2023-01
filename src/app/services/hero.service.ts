@@ -4,6 +4,7 @@ import { HEROES } from '../models/mock-heroes';
 import {Observable, of } from  'rxjs';
 import { MessageService } from './message.service';
 import { HttpClient } from '@angular/common/http';
+import { Movie } from '../models/movie';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,21 @@ export class HeroService {
     this.messageService.add(`Hero Service: fetched hero id = ${id}`);
     return this.http.get<Hero>(endpointUrl).pipe();
 
+  }
+
+  getMovies(): Observable<Movie[]> {
+    const endpointUrl = `https://my-json-server.typicode.com/johnrowley/demojson/movies`;
+    this.messageService.add('HeroService: fetched Movies');
+    return this.http.get<Movie[]>(endpointUrl).pipe();
+  }
+
+  getMovie(id: number): Observable<Movie> {
+    const endpointUrl = `https://my-json-server.typicode.com/johnrowley/demojson/movies/${id}`;
+    this.messageService.add(`Hero Service: fetched movie id = ${id}`);
+    return this.http.get<Movie>(endpointUrl).pipe();
 
   }
+
+
+
 }
